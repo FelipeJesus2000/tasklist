@@ -1,0 +1,42 @@
+<mxfile host="Electron" modified="2024-07-26T20:20:05.015Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.5.3 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="Az9lX4YhIgLZtVtedzuS" version="24.5.3" type="device">
+  <diagram id="prtHgNgQTEPvFCAcTncT" name="Page-1">
+    <mxGraphModel dx="915" dy="690" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aTURooDjBuoHIjvPpmW2-4" value="Cadastrar tarefa" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+          <mxGeometry x="60" y="180" width="350" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="aTURooDjBuoHIjvPpmW2-31" value="usuário" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="aTURooDjBuoHIjvPpmW2-4">
+          <mxGeometry x="75" y="40" width="200" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="aTURooDjBuoHIjvPpmW2-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="aTURooDjBuoHIjvPpmW2-31" source="aTURooDjBuoHIjvPpmW2-33" target="aTURooDjBuoHIjvPpmW2-34">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="120" />
+              <mxPoint x="100" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aTURooDjBuoHIjvPpmW2-33" value="" style="ellipse;fillColor=strokeColor;html=1;" vertex="1" parent="aTURooDjBuoHIjvPpmW2-31">
+          <mxGeometry x="85" y="30" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aTURooDjBuoHIjvPpmW2-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="aTURooDjBuoHIjvPpmW2-31" source="aTURooDjBuoHIjvPpmW2-34" target="aTURooDjBuoHIjvPpmW2-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aTURooDjBuoHIjvPpmW2-34" value="requisitar página de cadastro" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;" vertex="1" parent="aTURooDjBuoHIjvPpmW2-31">
+          <mxGeometry x="30" y="80" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="aTURooDjBuoHIjvPpmW2-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="aTURooDjBuoHIjvPpmW2-31" source="aTURooDjBuoHIjvPpmW2-36" target="aTURooDjBuoHIjvPpmW2-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aTURooDjBuoHIjvPpmW2-36" value="preencher formuário com campos: nome tarefa; tempo tarefa; prioridade; dia da semana" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;" vertex="1" parent="aTURooDjBuoHIjvPpmW2-31">
+          <mxGeometry x="30" y="140" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="aTURooDjBuoHIjvPpmW2-38" value="clicar no botão cadastrar" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;" vertex="1" parent="aTURooDjBuoHIjvPpmW2-31">
+          <mxGeometry x="30" y="230" width="140" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
