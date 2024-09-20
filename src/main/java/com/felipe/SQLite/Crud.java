@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.felipe.Audio;
 import com.felipe.Dates;
 import com.felipe.Task;
@@ -267,6 +268,64 @@ public class Crud {
             return "the task has been updated";
         }
         return "An error occurred and the task could not be updated";
+    }
+
+    public ArrayList<String> selectDedicatedTime(){
+        ArrayList<String> stats = new ArrayList<>();;
+        ResultSet rs = null; 
+        Connection connection = null;
+        Statement stmt = null;
+
+        // select all time dedicated
+        String dedicatedAllTask = "SELECT \n" 
+        +"time(SUM(strftime('%s', hr_dedicated) - strftime('%s', '00:00:00')), 'unixepoch') AS total_time\n" 
+        +"FROM \n" 
+        +"tb_quest ";
+        
+        try{
+            connection = sqlConnection.getConnection();
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery(dedicatedAllTask);
+
+            while(rs.next()){
+                stats.add(rs.getString(1));
+            }
+            connection = null;
+            rs = null;
+            stmt = null;
+        }
+        catch(SQLException exception){
+            System.out.println(exception.getMessage());
+            stats.clear();
+            return stats;
+        }
+
+        // select dedicated of one task 
+        String dedicatedOneTask = "SELECT \n"
+        +"time(SUM(strftime('%s', hr_dedicated) - strftime('%s', '00:00:00')), 'unixepoch') AS total_time\n" 
+        +"FROM \n"
+        +"tb_quest\n"
+        +"WHERE nm_quest = 'test'";
+
+        try{
+            connection = sqlConnection.getConnection();
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery(dedicatedOneTask);
+
+            while(rs.next()){
+                stats.add(rs.getString(1));
+            }
+            connection = null;
+            rs = null;
+            stmt = null;
+        }
+        catch(SQLException exception){
+            System.out.println(exception.getMessage());
+            stats.clear();
+            return stats;
+        }
+
+        return stats;
     }
 
     // show tables

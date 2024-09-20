@@ -14,12 +14,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class StatsPage extends Page {
    public StatsPage() {
@@ -42,8 +50,7 @@ public class StatsPage extends Page {
 
       // row task name
       JPanel rowTaskName = new JPanel();
-      
-  
+
       ImageIcon taskIcon = new ImageIcon(App.pathAssets + "task2.png");
       JLabel lblTaskName = new JLabel(taskIcon);
       // lblTaskName.setFont(new Font("Arial", Font.PLAIN, 24));
@@ -87,7 +94,7 @@ public class StatsPage extends Page {
             // if doesn't match value return
             if (tasks.size() == 0) {
                String message = "Não há nenhuma atividade com este nome\n"
-               + "Verifique se digitou as letras maiúsculas e minúsculas corretamente";
+                     + "Verifique se digitou as letras maiúsculas e minúsculas corretamente";
                Audio.playAudio("warning.wav", message, "Ops!");
                return;
             }
@@ -103,7 +110,49 @@ public class StatsPage extends Page {
             totalDedicatedTime.arrangeTime();
             taskNameResult.setText(inputSearch.getText());
             dedicatedTimeResult.setText(totalDedicatedTime.getTime());
-           
+
+            // graphics
+            ArrayList<String> dedicateArrayList = crud.selectDedicatedTime();
+            if (!dedicateArrayList.isEmpty()) {
+               Timer hrDedicatedTotal = new Timer(dedicateArrayList.get(0));
+               Timer hrDedicatedOne = new Timer(dedicateArrayList.get(1));
+               // transform hours into seconds of total
+               int seccondsTotal = hrDedicatedTotal.getSecconds() + hrDedicatedTotal.getMinutes() * 60
+                     + hrDedicatedTotal.getHours() * 3600;
+               // transform hours into seconds of selected task
+               int seccondsOne = hrDedicatedOne.getSecconds() + hrDedicatedOne.getMinutes() * 60
+                     + hrDedicatedOne.getHours() * 3600;
+    
+
+               int pcOne = Math.round(seccondsOne * 100 / seccondsTotal);
+               int pcRest = Math.round(100 - pcOne);
+               System.out.println("percent task: " + pcOne + "%");
+               System.out.println("percent other task: " + pcRest + "%");
+
+               // create dataset 
+               DefaultPieDataset dataset = new DefaultPieDataset();
+               dataset.setValue("Outras atividades", pcRest);
+               dataset.setValue(inputSearch.getText(), pcOne);
+
+               // create graphic 
+               JFreeChart graph = ChartFactory.createPieChart(
+                     "Porcentagem de tempo dedicado na tarefa", // title
+                     dataset, // data
+                     true, // subtitle
+                     true, // tooltips
+                     false // URLs
+               );
+
+
+               graph.setBackgroundPaint(Color.decode("#F2F2F2"));
+               // create panel 
+               ChartPanel panelGraph = new ChartPanel(graph);
+               panelGraph.setPreferredSize(new java.awt.Dimension(280, 185));
+
+               panelGraph.setBackground(Color.BLACK);
+
+               panelResults.add(panelGraph, BorderLayout.SOUTH);
+            }
          }
       });
    }

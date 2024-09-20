@@ -46,7 +46,7 @@ public class App {
         // reset daily task
         Crud crud = new Crud();
         crud.resetDailyTask();
-        // crud.sqlite();
+        
 
         // show home page
         setHomePage();
