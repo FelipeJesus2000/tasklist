@@ -32,6 +32,12 @@ public class App {
     // #F2F2F2
 
     public static void main(String[] args) {
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        
         // Create JFrame
         frame = new JFrame("Lista de Tarefas");
         frame.setSize(frameWidth, frameHeight);

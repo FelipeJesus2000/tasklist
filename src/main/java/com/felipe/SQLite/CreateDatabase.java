@@ -25,8 +25,8 @@ public class CreateDatabase {
                 + "hr_dedicated TEXT DEFAULT '00:00:00', \n"
                 + "ic_complete INTEGER NOT NULL DEFAULT 0, \n"
                 + "ac_weekday TEXT NOT NULL REFERENCES tb_weekday(ac_weekday), \n"
-                + "dt_last_update TEXT)"
-                + "CONSTRAINT chk_priority CHECK(nm_priority IN ('baixa', 'média', 'alta'))";
+                + "dt_last_update TEXT,"
+                + "CONSTRAINT chk_priority CHECK(nm_priority IN ('baixa', 'média', 'alta')))";
 
         // execute code
         try (Connection conn = DriverManager.getConnection(url);
